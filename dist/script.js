@@ -5,52 +5,46 @@ console.log(entermessage);
 const msgsend = document.querySelector("#msgsend");
 console.log(msgsend);
 
-
 msgsend.addEventListener("click", messagedisplay);
+entermessage.addEventListener('keypress',function(event){
+    if(event.key == 'Enter'){
+        messagedisplay()
+    }
+})
 
 function messagedisplay() {
   const msgvalue = entermessage.value.trim();
   if (msgvalue) {
-    const ptag = document.createElement("P");
-    ptag.style.Color="white"
-    ptag.style.border="white"
+    const ptag = document.createElement("div");
+
+    ptag.style.margin = "5px 0";
+    ptag.style.padding = "5px";
+    ptag.style.width = "auto";
+    ptag.style.border = "1px solid";
+    ptag.style.borderRadius = "10px";
+
+    // Calculate the width based on the length of the input string
+    let baseWidth = 15; // Base width for a single character in pixels
+    let padding = 20; // Additional padding to account for input padding and margins
+    let maxWidth = 500; // Maximum width for message box
+    let width = baseWidth * msgvalue.length + padding;
+
+    // Set the calculated width or max width if exceeds threshold
+    if (msgvalue.length > 600) {
+      width = maxWidth;
+    } else if (msgvalue.length > 200) {
+      width = maxWidth;
+    }
+
+    // Set the calculated width
+    ptag.style.width = `${width}px`;
+    ptag.style.maxWidth = `${maxWidth}px`;
+    ptag.style.wordWrap = "break-word"; // Ensure long words break to fit within the box
+
     console.log(ptag);
     ptag.innerHTML = msgvalue;
     chatBox.appendChild(ptag);
   }
-  entermessage.value = '';
-  console.log(msgvalue)
+  entermessage.value = "";
+  console.log(msgvalue);
 }
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     const chatBox = document.querySelector(".chatBox");
-//     console.log(chatBox);
-//     const entermessage = document.querySelector("#entermessage");
-//     console.log(entermessage);
-//     const msgsend = document.querySelector("#msgsend");
-//     console.log(msgsend);
-  
-//     msgsend.addEventListener("click", messagedisplay);
-  
-//     function messagedisplay() {
-//       const msgvalue = entermessage.value.trim();
-//       if (msgvalue) {
-//         const ptag = document.createElement("p");
-        
-//         // Set styles directly in JavaScript
-//         ptag.style.margin = "5px 0";
-//         ptag.style.padding = "10px";
-//         ptag.style.borderRadius = "5px";
-//         ptag.style.backgroundColor = "#e0e0e0";
-  
-//         ptag.innerHTML = msgvalue;
-//         chatBox.appendChild(ptag);
-        
-//         // Optionally, you can also add a class for further styling if needed
-//         // ptag.classList.add('message');
-//       }
-//       entermessage.value = '';
-//       console.log(msgvalue);
-//     }
-//   });
-  
