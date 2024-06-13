@@ -681,6 +681,10 @@ video {
   width: 58.333333%;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .min-w-96 {
   min-width: 24rem;
 }
@@ -711,6 +715,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -737,6 +745,14 @@ video {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .py-5 {
@@ -801,7 +817,4 @@ video {
 
 .will-change-auto {
   will-change: auto;
-}
-.chatBox{
-  height: 90vh;
 }

@@ -16,6 +16,7 @@ function messagedisplay() {
   const msgvalue = entermessage.value.trim();
   if (msgvalue) {
     const ptag = document.createElement("div");
+    // const ptag = document.querySelector("#ptag")
 
     ptag.style.margin = "5px 0";
     ptag.style.padding = "5px";
