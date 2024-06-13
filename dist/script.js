@@ -5,6 +5,36 @@ console.log(entermessage);
 const msgsend = document.querySelector("#msgsend");
 console.log(msgsend);
 
+// this will connect the websocket server
+const ws = new WebSocket(`ws://${window.location.host}`);
+
+ws.onopen = ()=>{
+    console.log("connected to websocket server");
+}
+
+ws.onmessage = (event) => {
+    const ptag = document.createElement("div");
+    ptag.style.margin = "5px 0";
+    ptag.style.padding = "5px";
+    ptag.style.width = "auto";
+    ptag.style.border = "1px solid";
+    ptag.style.borderRadius = "10px";
+    ptag.style.wordWrap = "break-word";
+    ptag.style.backgroundColor = "#f1f1f1"; // background color for incoming messages
+    ptag.innerHTML = event.data;
+    chatBox.appendChild(ptag);
+    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to the bottom
+};
+
+ws.onclose = () => {
+    console.log('Disconnected from WebSocket server');
+};
+
+msgsend.addEventListener("click", () => {
+    sendMessage();
+});
+
+
 msgsend.addEventListener("click", messagedisplay);
 entermessage.addEventListener('keypress',function(event){
     if(event.key == 'Enter'){
@@ -48,4 +78,4 @@ function messagedisplay() {
   }
   entermessage.value = "";
   console.log(msgvalue);
-}
+ }
